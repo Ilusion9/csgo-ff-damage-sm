@@ -23,7 +23,7 @@ public Action OnTakeDamage(int victim, int &attacker, int &inflictor, float &dam
 		return Plugin_Continue;
 	}
 	
-	// Frienly fire
+	// Friendly fire
 	if (GetClientTeam(attacker) == GetClientTeam(victim))
 	{
 		char inflictorClass[64];
