@@ -18,31 +18,32 @@ public OnClientPutInServer(client)
 
 public Action OnTakeDamage(int victim, int &attacker, int &inflictor, float &damage, int &damagetype, int &weapon, float damageForce[3], float damagePosition[3])
 {
-	// Invalid attacker or self damage
+	// Invalid attackers or self damage
 	if (attacker < 1 || attacker > MaxClients || attacker == victim || inflictor < 1)
 	{
 		return Plugin_Continue;
 	}
 	
-	// Friendly fire
+	// Handle friendly fire
 	if (GetClientTeam(attacker) == GetClientTeam(victim))
 	{
 		char inflictorClass[64];
 		if (GetEdictClassname(inflictor, inflictorClass, sizeof(inflictorClass)))
 		{
-			// C4 damage
+			// Allow C4 damage
 			if (StrEqual(inflictorClass, "planted_c4"))
 			{
 				return Plugin_Continue;
 			}
 			
-			// Incendiary damage
+			// Allow incendiary damage
 			if (StrEqual(inflictorClass, "inferno"))
 			{
 				return Plugin_Continue;
 			}
 		}
 		
+		// Block everything else
 		return Plugin_Handled;
 	}
 	
