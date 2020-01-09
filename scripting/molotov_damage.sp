@@ -11,7 +11,7 @@ public Plugin myinfo =
 	url = "https://github.com/Ilusion9/"
 };
 
-public OnClientPutInServer(client)
+public void OnClientPutInServer(int client)
 {
     SDKHook(client, SDKHook_OnTakeDamage, OnTakeDamage);
 }
