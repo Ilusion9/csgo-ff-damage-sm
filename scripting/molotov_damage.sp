@@ -39,10 +39,7 @@ public Action OnTakeDamage(int victim, int &attacker, int &inflictor, float &dam
 			// Allow incendiary damage
 			if (StrEqual(inflictorClass, "inferno"))
 			{
-				if (CheckCommandAccess(victim, "NoMolotovDamage", 0, false))
-				{
-					return Plugin_Continue;
-				}
+				return Plugin_Continue;
 			}
 		}
 		
