@@ -13,10 +13,10 @@ public Plugin myinfo =
 
 public void OnClientPutInServer(int client)
 {
-	SDKHook(client, SDKHook_OnTakeDamage, OnTakeDamage);
+	SDKHook(client, SDKHook_OnTakeDamage, SDK_OnTakeDamage);
 }
 
-public Action OnTakeDamage(int victim, int &attacker, int &inflictor, float &damage, int &damagetype, int &weapon, float damageForce[3], float damagePosition[3])
+public Action SDK_OnTakeDamage(int victim, int &attacker, int &inflictor, float &damage, int &damagetype, int &weapon, float damageForce[3], float damagePosition[3])
 {
 	// Invalid attackers or self damage
 	if (attacker < 1 || attacker > MaxClients || attacker == victim || inflictor < 1)
@@ -42,9 +42,10 @@ public Action OnTakeDamage(int victim, int &attacker, int &inflictor, float &dam
 				return Plugin_Continue;
 			}
 		}
-		
-		// Block everything else
-		return Plugin_Handled;
+
+		damage = 0.0;
+		damagetype |= DMG_PREVENT_PHYSICS_FORCE;
+		return Plugin_Changed;
 	}
 	
 	return Plugin_Continue;
