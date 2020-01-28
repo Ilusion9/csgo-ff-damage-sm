@@ -1,5 +1,8 @@
 # Description
-Enable molotov damage for teammates.
+Enable only molotov damage for teammates and block everything else.
+
+# Alliedmods
+https://forums.alliedmods.net/showthread.php?p=2681947
 
 # ConVars
 ```
