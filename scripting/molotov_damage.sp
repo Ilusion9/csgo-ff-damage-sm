@@ -6,7 +6,7 @@ public Plugin myinfo =
 {
 	name = "Molotov Damage",
 	author = "Ilusion9",
-	description = "Enable molotov damage for teammates",
+	description = "Enable only molotov damage for teammates and block everything else.",
 	version = "1.0",
 	url = "https://github.com/Ilusion9/"
 };
