@@ -11,6 +11,27 @@ public Plugin myinfo =
 	url = "https://github.com/Ilusion9/"
 };
 
+bool g_IsPluginLateLoaded;
+
+public APLRes AskPluginLoad2(Handle myself, bool late, char[] error, int err_max)
+{
+	g_IsPluginLateLoaded = late;
+}
+
+public void OnPluginStart()
+{
+	if (g_IsPluginLateLoaded)
+	{
+		for (int i = 1; i <= MaxClients; i++)
+		{
+			if (IsClientInGame(i))
+			{
+				OnClientPutInServer(i);
+			}
+		}
+	}
+}
+
 public void OnClientPutInServer(int client)
 {
 	SDKHook(client, SDKHook_OnTakeDamage, SDK_OnTakeDamage);
