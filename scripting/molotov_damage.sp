@@ -11,16 +11,16 @@ public Plugin myinfo =
 	url = "https://github.com/Ilusion9/"
 };
 
-bool g_IsPluginLateLoaded;
+bool g_IsPluginLoadedLate;
 
 public APLRes AskPluginLoad2(Handle myself, bool late, char[] error, int err_max)
 {
-	g_IsPluginLateLoaded = late;
+	g_IsPluginLoadedLate = late;
 }
 
 public void OnPluginStart()
 {
-	if (g_IsPluginLateLoaded)
+	if (g_IsPluginLoadedLate)
 	{
 		for (int i = 1; i <= MaxClients; i++)
 		{
