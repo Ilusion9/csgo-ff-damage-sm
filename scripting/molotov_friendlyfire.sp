@@ -4,7 +4,7 @@
 
 public Plugin myinfo =
 {
-	name = "Molotov Damage",
+	name = "Molotov Friendly Fire",
 	author = "Ilusion9",
 	description = "Enable only molotov damage for teammates and block everything else.",
 	version = "1.0",
