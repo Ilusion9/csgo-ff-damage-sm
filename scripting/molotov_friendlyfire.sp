@@ -4,7 +4,7 @@
 
 public Plugin myinfo =
 {
-	name = "Molotov Friendly Fire",
+	name = "Molotov Damage",
 	author = "Ilusion9",
 	description = "Enable only molotov damage for teammates and block everything else.",
 	version = "1.0",
@@ -39,35 +39,28 @@ public void OnClientPutInServer(int client)
 
 public Action SDK_OnTakeDamage(int victim, int &attacker, int &inflictor, float &damage, int &damagetype, int &weapon, float damageForce[3], float damagePosition[3])
 {
-	// Invalid attackers or self damage
 	if (attacker < 1 || attacker > MaxClients || attacker == victim || inflictor < 1)
 	{
 		return Plugin_Continue;
 	}
 	
-	// Handle friendly fire
-	if (GetClientTeam(attacker) == GetClientTeam(victim))
+	if (GetClientTeam(attacker) != GetClientTeam(victim))
 	{
-		char inflictorClass[64];
-		if (GetEdictClassname(inflictor, inflictorClass, sizeof(inflictorClass)))
-		{
-			// Allow C4 damage
-			if (StrEqual(inflictorClass, "planted_c4"))
-			{
-				return Plugin_Continue;
-			}
-			
-			// Allow incendiary damage
-			if (StrEqual(inflictorClass, "inferno"))
-			{
-				return Plugin_Continue;
-			}
-		}
-
-		damage = 0.0;
-		damagetype |= DMG_PREVENT_PHYSICS_FORCE;
-		return Plugin_Changed;
+		return Plugin_Continue;
 	}
 	
-	return Plugin_Continue;
+	if (inflictor > MaxClients)
+	{
+		char inflictorClass[64];
+		GetEdictClassname(inflictor, inflictorClass, sizeof(inflictorClass));
+		
+		if (StrEqual(inflictorClass, "planted_c4") || StrEqual(inflictorClass, "inferno"))
+		{
+			return Plugin_Continue;
+		}
+	}
+	
+	damage = 0.0;
+	damagetype |= DMG_PREVENT_PHYSICS_FORCE;
+	return Plugin_Changed;
 }
