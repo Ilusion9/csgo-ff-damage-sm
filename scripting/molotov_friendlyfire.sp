@@ -39,7 +39,7 @@ public void OnClientPutInServer(int client)
 
 public Action SDK_OnTakeDamage(int victim, int &attacker, int &inflictor, float &damage, int &damagetype, int &weapon, float damageForce[3], float damagePosition[3])
 {
-	if (attacker < 1 || attacker > MaxClients || attacker == victim || inflictor < 1)
+	if (attacker < 1 || attacker > MaxClients || attacker == victim || inflictor < 1 || !IsClientInGame(victim) || !IsClientInGame(attacker))
 	{
 		return Plugin_Continue;
 	}
