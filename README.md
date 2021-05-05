@@ -1,16 +1,36 @@
 # Description
-Enable only molotov damage for teammates and block everything else.
+Manage the damage done to teammates.
 
 # Alliedmods
 https://forums.alliedmods.net/showthread.php?p=2681947
 
-# ConVars
+# Required ConVars
 ```
 mp_friendlyfire 1
-ff_damage_reduction_bullets 0.33
-ff_damage_reduction_grenade 0.85
-ff_damage_reduction_grenade_self 1
-ff_damage_reduction_other 0.4
 ```
-The ff_ convars can be changed as you want, but be sure the friendly fire still works.
-On default casual gamemode, mp_friendlyfire is enabled and all ff_ convars on 0. Even with mp_friendlyfire enabled, friendly fire doesn't work.
+
+# Plugin ConVars
+```
+sm_ff_damage_reduction_hegrenade 1.0 - Damage done to teammates by a thrown hegrenade. 
+sm_ff_damage_reduction_hegrenade_self 1.0 - Damage done to players by their own hegrenade.
+sm_ff_damage_reduction_molotov 1.0 - Damage done to teammates by a thrown molotov.
+sm_ff_damage_reduction_molotov_self 1.0 - Damage done to players by their own molotov.
+sm_ff_damage_reduction_knife 1.0 - Damage done to teammates by a knife.
+sm_ff_damage_reduction_taser 1.0 - Damage done to teammates by a taser.
+sm_ff_damage_reduction_other 1.0 - Damage done to teammates by other things.
+```
+
+# Other CS:GO ConVars available
+```
+ff_damage_bullet_penetration
+ff_damage_reduction_bullets
+ff_damage_decoy_explosion
+ff_damage_grenade_hit
+```
+
+# CS:GO ConVars which becomes useless with this plugin
+```
+ff_damage_reduction_grenade
+ff_damage_reduction_grenade_self
+ff_damage_reduction_other
+```
