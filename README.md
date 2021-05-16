@@ -28,7 +28,7 @@ ff_damage_decoy_explosion
 ff_damage_grenade_hit
 ```
 
-# CS:GO ConVars which becomes useless with this plugin
+# Useless CS:GO ConVars with this plugin
 ```
 ff_damage_reduction_grenade
 ff_damage_reduction_grenade_self
